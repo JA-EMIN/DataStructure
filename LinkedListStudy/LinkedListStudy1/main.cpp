@@ -1,10 +1,11 @@
-#include <iostream>
-#include "LinkedList.h"
+#pragma once
+#include<iostream>
+#include"LinkedList.h"
 
 using namespace std;
-int main()
+int main(void)
 {
-	CLinkedList<int> listInt;
+	LinkedList<int> listInt;
 	for (int i = 0; i < 100; i++)
 	{
 		listInt.push_back(i);
