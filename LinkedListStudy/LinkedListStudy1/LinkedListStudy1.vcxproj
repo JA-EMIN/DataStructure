@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="LinkNode.h" />
+    <ClInclude Include="ListIterator.h" />
+    <ClInclude Include="ReverseIterator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

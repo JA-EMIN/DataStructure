@@ -4,6 +4,12 @@ class LinkNode
 {
 	template<typename T>
 	friend class LinkedList;
+	
+	template<typename T>
+	friend class ListIterator;
+
+	template<typename T>
+	friend class ReverseListIterator;
 public:
 	LinkNode()
 	{

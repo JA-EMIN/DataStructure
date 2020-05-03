@@ -1,5 +1,7 @@
 #pragma once
 #include "LinkNode.h"
+#include "ListIterator.h"
+#include "ReverseIterator.h"
 #include <assert.h>
 
 template<typename T>
@@ -24,7 +26,10 @@ public:
 private:
 	typedef LinkNode<T>* PNODE;
 	typedef LinkNode<T> NODE;
-
+public:
+	typedef ListIterator<T> Iterator;
+	typedef ReverseListIterator<T> ReverseIterator;
+	
 private:
 	PNODE pBegin;
 	PNODE pEnd;
@@ -129,5 +134,50 @@ public:
 		if (empty())
 			assert(false);
 		return pEnd->pPrev->m_Data;
+	}
+
+	Iterator begin() const
+	{
+		Iterator iter;
+		iter.m_pNode = pBegin->pNext;
+		return iter;
+	}
+
+	Iterator end() const
+	{
+		Iterator iter;
+		iter.m_pNode = pEnd;
+		return iter;
+	}
+
+	ReverseIterator rbegin() const
+	{
+		ReverseIterator iter;
+		iter.m_pNode = pEnd->pPrev;
+		return iter;
+	}
+	
+	ReverseIterator rend() const
+	{
+		ReverseIterator iter;
+		iter.m_pNode = pBegin;
+		return iter;
+	}
+	
+	void sort(bool (*pFunc)(const T&, const T&))
+	{
+		for (PNODE pFirst = pBegin->pNext; pFirst != pEnd->pPrev; pFirst = pFirst->pNext)
+		{
+			for (PNODE pSecond = pFirst->pNext; pSecond != pEnd; pSecond = pSecond->pNext)
+			{
+				if (pFunc(pFirst->m_Data, pSecond->m_Data))
+				{
+					T temp = pFirst->m_Data;
+					pFirst->m_Data = pSecond->m_Data;
+					pSecond->m_Data = temp;
+				}
+			}
+		}
+
 	}
 };
