@@ -12,7 +12,7 @@ typedef struct _tagData
 
 bool bubleSort(const tagData& tag1, const tagData& tag2)
 {
-	return tag1.num <tag2.num;
+	return tag1.num > tag2.num;
 }
 int main(void)
 {
@@ -44,7 +44,7 @@ int main(void)
 	srand((unsigned int)time(0));
 	
 	LinkedList<tagData> link;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		tagData tag = {};
 		tag.num = rand() % 100;
