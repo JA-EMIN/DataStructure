@@ -295,6 +295,10 @@ public:
 	{
 		return m_pNode->m_Data;
 	}
+	T& operator ->()
+	{
+		return m_pNode->m_Data;
+	}
 };
 
 template <typename T>
